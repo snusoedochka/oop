@@ -11,6 +11,7 @@ void actor::setDamageResistance(double dmg_res) { this->dmg_res = dmg_res; }
 
 unsigned int actor::getTeamID() { return team_id; }
 void actor::setTeamID(unsigned int tid) { this->team_id = tid; }
+void actor::onTurn() {}
 
 bool actor::canMove(cell& to_where)
 {
@@ -27,10 +28,17 @@ size_t actor::takeDamage(size_t dmg)
 	size_t new_dmg = (dmg >= getDamageThreshold() ? dmg - getDamageThreshold() : 0)
 			 * (1.0 - (getDamageResistance() >= 1.0 ? 1.0 : getDamageResistance()));
 	setHealth(new_dmg < getHealth() ? getHealth() - new_dmg : 0);
-	return new_dmg;
+    if(getHealth() == 0) onDeath();
+    return new_dmg;
 }
 size_t actor::healDamage(size_t heal)
 {
-	setHealth(getMaxHealth() - getHealth() <= heal ? getHealth() + heal : getMaxHealth());
-	return getMaxHealth() - getHealth() <= heal ? heal : getMaxHealth() - heal;
+    size_t healed = getMaxHealth() - getHealth() > heal ? heal : getMaxHealth() - getHealth();
+    setHealth(getMaxHealth() - getHealth() > heal ? getHealth() + heal : getMaxHealth());
+    return healed;
 }
+
+void actor::onDeath() {}
+
+void actor::onWalkedIn(actor& by_who) {}
+void actor::onWalkOn(cell& to_where) {}

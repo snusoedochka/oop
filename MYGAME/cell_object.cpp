@@ -14,3 +14,4 @@ void cell_object::initView()
 {
 	vw = new cell_object_view('*', *this);
 }
+void cell_object::onAdd(cell& holder) {}

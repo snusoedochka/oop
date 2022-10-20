@@ -1,25 +1,18 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef ENEMY_H
+#define ENEMY_H
+
+#include "../actors/actor.h"
+#include "../actions/action_combat.h"
+#include "../actions/action_move.h"
 
 #include <vector>
 
-#include "../item_event/item_event.h"
-#include "../actions/action_move.h"
-
-
-class player : public actor
+class enemy_event : public actor
 {
 	public:
 
-	player();
-
-	// Properites
-    void setAP(size_t ap);
-    void setMaxAP(size_t max_ap);
+	// Properties
 	size_t& getAP();
-
-	// Inventory
-	bool addItemToInventory(item_event* i);
 
 	// Events
 	virtual void onAdd(cell& holder);
@@ -30,17 +23,15 @@ class player : public actor
 	virtual void onWalkedIn(actor& by_who);
 	virtual void onWalkOn(cell& to_where);
 
-
 	protected:
 
 	virtual void initView();
 
 	size_t ap, max_ap;
 
-	std::vector<item_event*> inventory;
-	size_t max_inventory_size = 10;
+	size_t detection_dist;
 
-
+	action_combat* atk_action;
 	action_move* mv_action;
 };
 

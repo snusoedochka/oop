@@ -22,16 +22,16 @@ class actor : public cell_object
 	virtual void setTeamID(unsigned int tid);
 
 	// Events
-	virtual void onTurn() = 0;
+	virtual void onTurn();
 
 	virtual bool canMove(cell& to_where);
 
 	virtual size_t takeDamage(size_t dmg);
 	virtual size_t healDamage(size_t heal);
-	virtual void onDeath() = 0;
+	virtual void onDeath()/* = 0*/;
 
-	virtual void onWalkedIn(actor& by_who) = 0;
-	virtual void onWalkOn(cell& to_where) = 0;
+	virtual void onWalkedIn(actor& by_who);
+	virtual void onWalkOn(cell& to_where);
 
 
 	private:
