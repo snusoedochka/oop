@@ -17,7 +17,7 @@ class cell_object
 	cell_object_view& getView();
 
 	// Events
-	virtual void onAdd(cell& holder) = 0;
+	virtual void onAdd(cell& holder);
 
 
 	protected:

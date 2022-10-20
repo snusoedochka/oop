@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "actors/enemies/acolyte.h"
+#include "enemy_event/enemies/acolyte.h"
 
 #include "actors/actor_spawner.h"
 #include "actors/actor_spawner.cpp"
@@ -17,8 +17,8 @@ class game
 {
 private:
 
-    field* mainfield;
-    field_view* mainfield_view;
+    field* mainfield{};
+    field_view* mainfield_view{};
 
     player* mainplr = nullptr;
     static std::vector<actor_spawner_func> enemy_spawn_funcs;

@@ -29,7 +29,6 @@ class field
 	// Generation
 
 	cell_entrance* generate_entrance_exit(size_t min_dist = 3);
-
 	// Gamesim
 
 	void tickActors();

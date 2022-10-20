@@ -2,6 +2,7 @@
 
 #include "../cell_object_view.h"
 #include "../cells/cell_exit.h"
+#include "../field.h"
 
 player::player()
 {
@@ -19,7 +20,7 @@ size_t& player::getAP() { return ap; }
 
 // Inventory
 
-bool player::addItemToInventory(item* i)
+bool player::addItemToInventory(item_event* i)
 {
 	for(size_t j = 0; j < inventory.size(); ++j)
 		if(inventory[j]->join(*i))
@@ -39,7 +40,8 @@ void player::onAdd(cell& holder) {}
 
 void player::onTurn()
 {
-	ap = max_ap;
+    ap = max_ap;
+
 }
 void player::onDeath() {}
 

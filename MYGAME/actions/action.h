@@ -12,7 +12,7 @@ class action
 	virtual bool canExecute(size_t ap, actor* active, actor* passive, cell* c) = 0;
 
     virtual std::string execute(size_t& ap, actor* active, actor* passive, cell* c) = 0;
-    //virtual bool tryExecute(size_t& ap, actor* active, actor* passive, cell* c);
+    virtual bool tryExecute(size_t& ap, actor* active, actor* passive, cell* c);
 };
 
 #endif
