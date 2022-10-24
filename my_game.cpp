@@ -74,19 +74,28 @@ void game::run()
 
         std::cout << '\n' << "Where r u ganna be: ";
         cell* cur = &mainplr->getParentCell();
-
         switch(getchar()){
-            case 8:
-                cur = &cur->get_parent_field().get_cell(cur->get_x(), cur->get_y()+1);
+            case '8':
+                cur->set_object(nullptr);
+                cur = &cur->get_parent_field().get_cell(cur->get_x()-1, cur->get_y());
+                cur->set_object(mainplr);
+
+                //mainfield_view->display();
                 break;
-            case 2:
-                cur = &cur->get_parent_field().get_cell(cur->get_x(), cur->get_y()-1);
-                break;
-            case 4:
-                cur = &cur->get_parent_field().get_cell(cur->get_x() -1 , cur->get_y());
-                break;
-            case 6:
+            case '2':
+                cur->set_object(nullptr);
                 cur = &cur->get_parent_field().get_cell(cur->get_x() +1 , cur->get_y());
+                cur->set_object(mainplr);
+                break;
+            case '4':
+                cur->set_object(nullptr);
+                cur = &cur->get_parent_field().get_cell(cur->get_x(), cur->get_y()-1);
+                cur->set_object(mainplr);
+                break;
+            case '6':
+                cur->set_object(nullptr);
+                cur = &cur->get_parent_field().get_cell(cur->get_x()  , cur->get_y()+1);
+                cur->set_object(mainplr);
                 break;
             default:
                 std::cout << "u cant move";
